@@ -1,0 +1,3 @@
+Gruntfile.js
+test/test-main.js
+test/coverage/**
