@@ -45,7 +45,7 @@ define([
       });
     });
 
-    describe('Search News', function () {
+    describe('Search', function () {
       var sandbox = sinon.sandbox.create();
       afterEach(function () {
         sandbox.restore();
@@ -59,7 +59,7 @@ define([
           return d.promise();
         });
 
-        var result = fixture.searchNews('election');
+        var result = fixture.search('election');
         expect(result.state()).to.equal('resolved');
         sinon.assert.calledWith(ajaxStub, sinon.match({url: 'http://content.guardianapis.com/search?show-fields=all'}));
         sinon.assert.calledWith(ajaxStub, sinon.match({data: {q: 'election'}}));
@@ -81,7 +81,7 @@ define([
           return d.promise();
         });
 
-        var result = fixture.searchNews('election');
+        var result = fixture.search('election');
         expect(result.state()).to.equal('rejected');
         sinon.assert.calledWith(ajaxStub, sinon.match({url: 'http://content.guardianapis.com/search?show-fields=all'}));
         sinon.assert.calledWith(ajaxStub, sinon.match({data: {q: 'election'}}));
@@ -97,8 +97,19 @@ define([
 
       });
     });
+  });
 
-
+  describe('Process', function () {
+    it('Converts api items for display', function () {
+      var items = testUtils.guardianApiSuccessResponse().response.results;
+      var results = fixture.process(items);
+      expect(results).to.have.length(items.length);
+      expect(results[0].publishedDate).to.equal(items[0].webPublicationDate);
+      expect(results[0].title).to.equal(items[0].webTitle);
+      expect(results[0].url).to.equal(items[0].webUrl);
+      expect(results[0].image).to.equal(items[0].fields.thumbnail);
+      expect(results[0].author).to.equal(items[0].fields.byline);
+    });
   });
 
 });

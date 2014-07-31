@@ -17,8 +17,8 @@ define(
 
     var execute = function(config) {
       // validate(config.query.val())
-      // execute ajax api search
-      // convert api items to display items
+      // searchNews(config.query.val())
+      //  success: process(apiResponse.response.results)
       // display items in dom
     };
 
@@ -30,7 +30,7 @@ define(
       }
     };
 
-    var searchNews = function(query) {
+    var search = function(query) {
       return $.ajax({
         url: 'http://content.guardianapis.com/search?show-fields=all',
         data: {
@@ -40,10 +40,23 @@ define(
       }).promise();
     };
 
+    var process = function(items) {
+      return items.map(function(item) {
+        return {
+          publishedDate: item.webPublicationDate,
+          title: item.webTitle,
+          url: item.webUrl,
+          image: item.fields.thumbnail,
+          author: item.fields.byline
+        };
+      });
+    };
+
     return {
       init: init,
       validate: validate,
-      searchNews: searchNews
+      search: search,
+      process: process
     };
 
   });
