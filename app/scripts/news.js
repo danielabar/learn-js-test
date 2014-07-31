@@ -30,9 +30,20 @@ define(
       }
     };
 
+    var searchNews = function(query) {
+      return $.ajax({
+        url: 'http://content.guardianapis.com/search?show-fields=all',
+        data: {
+          q: query
+        },
+        dataType: 'jsonp'
+      }).promise();
+    };
+
     return {
       init: init,
-      validate: validate
+      validate: validate,
+      searchNews: searchNews
     };
 
   });
