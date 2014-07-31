@@ -23,14 +23,11 @@ define(
     };
 
     var validate = function(value) {
-      if (!value) {
+      if (!value || (value + '').length < 2) {
         return false;
+      } else {
+        return true;
       }
-      var stringValue = value + '';
-      if (stringValue.length < 2) {
-        return false;
-      }
-      return true;
     };
 
     return {
