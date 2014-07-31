@@ -9,6 +9,10 @@ define([
   var expect = chai.expect;
 
   describe('NewsSpec.js: ', function() {
+    beforeEach(function() {
+      document.body.innerHTML = window.__html__['test/html/AppSpec.html'];
+    });
+
     it('Module is defined', function() {
       expect(fixture).not.to.be.null;
       expect(fixture).not.to.be.undefined;
@@ -112,6 +116,19 @@ define([
         expect(results[i].author).to.equal(items[i].fields.byline);
         expect(results[i].content).to.equal(items[i].fields.trailText);
       }
+    });
+
+    // TODO: Test null and empty lists
+  });
+
+  describe('Display', function() {
+    it('Displays news items', function () {
+      var loadInto = $('#searchResults');
+      var displayItems = testUtils.newsDisplayItems();
+      fixture.display(loadInto, displayItems);
+
+      var heading1 = loadInto.find('h4').eq(0).text();
+      expect(heading1).to.equal(displayItems[0].title);
     });
   });
 

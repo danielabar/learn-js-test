@@ -19,7 +19,7 @@ define(
       // validate(config.query.val())
       // searchNews(config.query.val())
       //  success: process(apiResponse.response.results)
-      // display items in dom
+      //    display items in dom
     };
 
     var validate = function(value) {
@@ -53,11 +53,22 @@ define(
       });
     };
 
+    // In a real app, this would be handled by templating
+    var display = function(loadInto, displayItems) {
+      displayItems.forEach(function(item) {
+        $('<h4></h4>', {
+          text: item.title,
+          class: 'media-heading'
+        }).appendTo(loadInto);
+      });
+    };
+
     return {
       init: init,
       validate: validate,
       search: search,
-      process: process
+      process: process,
+      display: display
     };
 
   });
