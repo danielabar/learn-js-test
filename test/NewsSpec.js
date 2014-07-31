@@ -104,11 +104,14 @@ define([
       var items = testUtils.guardianApiSuccessResponse().response.results;
       var results = fixture.process(items);
       expect(results).to.have.length(items.length);
-      expect(results[0].publishedDate).to.equal(items[0].webPublicationDate);
-      expect(results[0].title).to.equal(items[0].webTitle);
-      expect(results[0].url).to.equal(items[0].webUrl);
-      expect(results[0].image).to.equal(items[0].fields.thumbnail);
-      expect(results[0].author).to.equal(items[0].fields.byline);
+      for(var i = 0; i < results.length; i++) {
+        expect(results[i].publishedDate).to.equal(items[i].webPublicationDate);
+        expect(results[i].title).to.equal(items[i].webTitle);
+        expect(results[i].url).to.equal(items[i].webUrl);
+        expect(results[i].image).to.equal(items[i].fields.thumbnail);
+        expect(results[i].author).to.equal(items[i].fields.byline);
+        expect(results[i].content).to.equal(items[i].fields.trailText);
+      }
     });
   });
 

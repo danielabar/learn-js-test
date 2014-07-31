@@ -47,7 +47,8 @@ define(
           title: item.webTitle,
           url: item.webUrl,
           image: item.fields.thumbnail,
-          author: item.fields.byline
+          author: item.fields.byline,
+          content: item.fields.trailText
         };
       });
     };
