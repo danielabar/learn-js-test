@@ -24,7 +24,8 @@ require.config({
   paths: {
     jquery: 'app/bower_components/jquery/jquery',
     chai: '../bower_components/chai/chai',
-    sinon: '../bower_components/sinon/lib/sinon'
+    sinon: '../bower_components/sinon/lib/sinon',
+    testUtils: 'test/TestUtils'
   },
 
   // dynamically load all test files
