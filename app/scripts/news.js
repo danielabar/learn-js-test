@@ -16,10 +16,19 @@ define(
     };
 
     var execute = function(config) {
-      // validate(config.query.val())
-      // searchNews(config.query.val())
-      //  success: process(apiResponse.response.results)
-      //    display items in dom
+      var query = config.query.val();
+      if (!validate(query)) {
+        console.error('You have entered an invalid search term');
+        return;
+      }
+      search(query).then(
+        function(data) {
+          display(config.loadInto, process(data.response.results));
+        },
+        function(jqXHR, textStatus, errorThrown) {
+          console.error('textStatus: ' + textStatus + ', errorThrown: ' + errorThrown);
+        }
+      );
     };
 
     var validate = function(value) {
@@ -55,6 +64,7 @@ define(
 
     // In a real app, this would be handled by templating
     var display = function(loadInto, displayItems) {
+      loadInto.empty();
       displayItems.forEach(function(item) {
         $('<h4></h4>', {
           text: item.title,

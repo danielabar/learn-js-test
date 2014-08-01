@@ -122,13 +122,20 @@ define([
   });
 
   describe('Display', function() {
-    it('Displays news items', function () {
+    it('Cleans out old content and displays news items', function () {
       var loadInto = $('#searchResults');
+
+      expect(loadInto.find('#oldContent').text()).to.equal('Old Content');
+
       var displayItems = testUtils.newsDisplayItems();
       fixture.display(loadInto, displayItems);
 
-      var heading1 = loadInto.find('h4').eq(0).text();
-      expect(heading1).to.equal(displayItems[0].title);
+      expect(loadInto.find('#oldContent').text()).to.equal('');
+
+      for(var i = 0; i < displayItems.length; i++) {
+        var heading = loadInto.find('h4').eq(i).text();
+        expect(heading).to.equal(displayItems[i].title);
+      }
     });
   });
 
