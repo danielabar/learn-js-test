@@ -39,7 +39,9 @@ Test runs also generate a code coverage report. See the results in the  ```cover
 
 ## Run Tests Only
 
-```grunt test```
+  ```
+  grunt test
+  ```
 
 ## Build Project and Run Optimized version
 
