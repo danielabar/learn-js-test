@@ -44,6 +44,11 @@ Test runs also generate a code coverage report. See the results in the  ```cover
 ## Build Project and Run Optimized version
 
   ```
-  grunt build
-  grunt connect:dist:keepalive
+  grunt preview
+  ```
+
+## Deploy to gh-pages
+
+  ```
+  grunt deploy
   ```
