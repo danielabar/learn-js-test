@@ -127,6 +127,7 @@ module.exports = function(grunt) {
       // Run karma in a child process so it doesn't block subsequent grunt tasks
       unit: {
         configFile: 'karma.conf.js',
+        reporters: ['progress'],
         background: true
       },
       // Continuous integration mode: run tests once in PhantomJS browser
@@ -136,7 +137,7 @@ module.exports = function(grunt) {
         browsers: ['PhantomJS'],
         reporters: ['progress']
       },
-      // Run tests in all browsers and stay connected for other devices
+      // Run tests and coverage in all browsers and stay connected for other devices
       all: {
         configFile: 'karma.conf.js',
         browsers: ['Chrome', 'Firefox', 'IE', 'IE9', 'PhantomJS'],

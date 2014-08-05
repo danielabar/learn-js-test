@@ -1,4 +1,4 @@
-define(['jquery', './sentiment'], function($, sentiment) {
+define(['jquery', './sentiment', 'hbs!templates/searchResults'], function($, sentiment, template) {
 
     var init = function(config) {
       registerHandlers(config);
@@ -19,7 +19,7 @@ define(['jquery', './sentiment'], function($, sentiment) {
       }
       search(query).then(
         function(data) {
-          display(config.loadInto, process(data.response.results));
+          displayTemplate(config.loadInto, process(data.response.results));
         },
         function(jqXHR, textStatus, errorThrown) {
           console.error('textStatus: ' + textStatus + ', errorThrown: ' + errorThrown);
@@ -70,12 +70,18 @@ define(['jquery', './sentiment'], function($, sentiment) {
       });
     };
 
+    var displayTemplate = function(loadInto, displayItems) {
+      loadInto.empty();
+      loadInto.append(template({items: displayItems}));
+    };
+
     return {
       init: init,
       validate: validate,
       search: search,
       process: process,
-      display: display
+      display: display,
+      displayTemplate: displayTemplate
     };
 
   });

@@ -23,6 +23,8 @@ require.config({
   // Log the values of moduleName, url before and after normalizing
   paths: {
     jquery: 'app/bower_components/jquery/jquery',
+    handlebars: 'app/bower_components/handlebars/handlebars',
+    hbs: 'app/bower_components/require-handlebars-plugin/hbs',
     chai: '../bower_components/chai/chai',
     sinon: '../bower_components/sinon/lib/sinon',
     testUtils: 'test/TestUtils'

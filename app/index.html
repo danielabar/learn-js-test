@@ -89,6 +89,20 @@
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio corporis modi dicta molestias at inventore culpa natus explicabo dolorum nulla!
                       </div>
                     </div>
+                    <!-- In a real app, the templates would be pre-compiled -->
+                    <script type="text/x-handlebars-template" id="resultsTpl">
+                    {{#each items}}
+                      <div class="media">
+                        <a href="{{url}}" class="pull-left">
+                          <img src="{{image}}" alt="{{title}}" class="media-object">
+                        </a>
+                        <div class="media-body">
+                          <h4 class="media-heading">{{title}}</h4>
+                          {{content}}
+                        </div>
+                      </div>
+                    {{/each}}
+                  </script>
                   </div><!--//searchResults-->
                 </div>
               </div><!--//row-->
