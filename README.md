@@ -1,6 +1,6 @@
-# Sieve
+# Learn JS Test [![Build Status](https://secure.travis-ci.org/danielabar/learn-js-test.png?branch=master)](https://travis-ci.org/danielabar/learn-js-test)
 
-A project to demonstrate client-side JavaScript testing for an app built with RequireJS.
+> A project to demonstrate client-side JavaScript testing for an app built with RequireJS.
 
 ## Development Stack
 * App scaffolded with [yeoman](http://yeoman.io/) using [generator-webapp-rjs](https://www.npmjs.org/package/generator-webapp-rjs)
