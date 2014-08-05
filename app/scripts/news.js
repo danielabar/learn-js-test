@@ -1,8 +1,4 @@
-define(
-  [
-    'jquery'
-  ],
-  function($) {
+define(['jquery', './sentiment'], function($, sentiment) {
 
     var init = function(config) {
       registerHandlers(config);
@@ -57,7 +53,8 @@ define(
           url: item.webUrl,
           image: item.fields.thumbnail,
           author: item.fields.byline,
-          content: item.fields.trailText
+          content: item.fields.trailText,
+          sentimentResult: sentiment.analyze(item.fields.trailText)
         };
       });
     };

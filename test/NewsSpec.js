@@ -1,10 +1,11 @@
 define([
   '../app/scripts/news',
+  '../app/scripts/sentiment',
   '../app/bower_components/chai/chai',
   '../app/bower_components/sinon/lib/sinon',
   'jquery',
   'testUtils'
-], function(fixture, chai, sinon, $, testUtils) {
+], function(fixture, sentiment, chai, sinon, $, testUtils) {
 
   var expect = chai.expect;
 
@@ -104,9 +105,17 @@ define([
   });
 
   describe('Process', function () {
-    it('Converts api items for display', function () {
+    var sandbox = sinon.sandbox.create();
+    afterEach(function () {
+      sandbox.restore();
+    });
+
+    it('Converts api items for display and calls sentiment analysis', function () {
+      var sentimentStub = sandbox.stub(sentiment, 'analyze').returns('good');
       var items = testUtils.guardianApiSuccessResponse().response.results;
+
       var results = fixture.process(items);
+
       expect(results).to.have.length(items.length);
       for(var i = 0; i < results.length; i++) {
         expect(results[i].publishedDate).to.equal(items[i].webPublicationDate);
@@ -115,6 +124,7 @@ define([
         expect(results[i].image).to.equal(items[i].fields.thumbnail);
         expect(results[i].author).to.equal(items[i].fields.byline);
         expect(results[i].content).to.equal(items[i].fields.trailText);
+        sinon.assert.calledWith(sentimentStub, items[i].fields.trailText);
       }
     });
 
