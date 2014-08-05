@@ -35,7 +35,7 @@ The watch task also lints all the JavaScript code using [jshint](http://www.jshi
 It also starts the karma server, and runs all the tests in watch mode.
 Any changes to app source or tests will trigger re-running of tests.
 
-Test runs also generate a code coverage report. See the results in the  ```coverage``` directory.
+Test runs also generate a coverage report. See the results in the  ```coverage``` directory.
 
 ## Run Tests Only
 
