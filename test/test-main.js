@@ -25,6 +25,7 @@ require.config({
     jquery: 'app/bower_components/jquery/jquery',
     handlebars: 'app/bower_components/handlebars/handlebars',
     hbs: 'app/bower_components/require-handlebars-plugin/hbs',
+    templates: 'app/scripts/templates',
     chai: '../bower_components/chai/chai',
     sinon: '../bower_components/sinon/lib/sinon',
     testUtils: 'test/TestUtils'

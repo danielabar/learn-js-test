@@ -134,7 +134,6 @@ define([
   describe('Display', function() {
     it('Cleans out old content and displays news items', function () {
       var loadInto = $('#searchResults');
-
       expect(loadInto.find('#oldContent').text()).to.equal('Old Content');
 
       var displayItems = testUtils.newsDisplayItems();
@@ -151,11 +150,16 @@ define([
 
   describe('Display Templating', function () {
 
-    it.only('Cleans out old content and displays news item', function () {
+    it('Cleans out old content and displays news item', function () {
       var loadInto = $('#searchResults');
       expect(loadInto.find('#oldContent').text()).to.equal('Old Content');
       var displayItems = testUtils.newsDisplayItems();
       fixture.displayTemplate(loadInto, displayItems);
+
+      for(var i = 0; i < displayItems.length; i++) {
+        var heading = loadInto.find('h4').eq(i).text();
+        expect(heading).to.equal(displayItems[i].title);
+      }
     });
   });
 
