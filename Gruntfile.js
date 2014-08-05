@@ -134,6 +134,12 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js',
         singleRun: true,
         browsers: ['PhantomJS']
+      },
+      // Run tests in all browsers and stay connected for other devices
+      all: {
+        configFile: 'karma.conf.js',
+        browsers: ['Chrome', 'Firefox', 'IE', 'IE9', 'PhantomJS'],
+        autoWatch: true
       }
     },
 
