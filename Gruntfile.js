@@ -43,6 +43,7 @@ module.exports = function(grunt) {
       karma: {
         files: [
           '<%= yeoman.app %>/scripts/{,*/}*.js',
+          '<%= yeoman.app %>/{,*/}*.html',
           'test/**/*.js'
         ],
         tasks: ['karma:unit:run']
