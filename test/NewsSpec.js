@@ -145,6 +145,9 @@ define([
       for(var i = 0; i < displayItems.length; i++) {
         var heading = loadInto.find('h4').eq(i).text();
         expect(heading).to.equal(displayItems[i].title);
+
+        var content = loadInto.find('.media-body').eq(i).text();
+        expect(content).to.contain(displayItems[i].content);
       }
     });
   });
