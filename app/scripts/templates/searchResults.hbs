@@ -4,8 +4,9 @@
       <img src="{{image}}" alt="{{title}}" class="media-object">
     </a>
     <div class="media-body">
-      <h4 class="media-heading">{{title}}</h4>
+      <a href="{{url}}"><h4 class="media-heading text-primary">{{title}}</h4></a>
       {{content}}
+      <h5 class="info text-muted">{{author}}, {{publishedDate}}</h5>
     </div>
   </div>
 {{/each}}

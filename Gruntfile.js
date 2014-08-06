@@ -30,6 +30,7 @@ module.exports = function(grunt) {
       js: {
         files: [
           '<%= yeoman.app %>/scripts/{,*/}*.js',
+          '<%= yeoman.app %>/scripts/templates{,*/}*.hbs',
           'test/**/*.js',
           'test/html/**/*.html',
           '!coverage/**/*.js'
@@ -43,6 +44,7 @@ module.exports = function(grunt) {
       karma: {
         files: [
           '<%= yeoman.app %>/scripts/{,*/}*.js',
+          '<%= yeoman.app %>/scripts/templates{,*/}*.hbs',
           '<%= yeoman.app %>/{,*/}*.html',
           'test/**/*.js'
         ],

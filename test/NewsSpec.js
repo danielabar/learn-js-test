@@ -148,6 +148,10 @@ define([
 
         var content = loadInto.find('.media-body').eq(i).text();
         expect(content).to.contain(displayItems[i].content);
+
+        var info = loadInto.find('.info').eq(i).text();
+        expect(info).to.contain(displayItems[i].author);
+        expect(info).to.contain(displayItems[i].publishedDate);
       }
     });
   });
