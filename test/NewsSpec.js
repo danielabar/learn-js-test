@@ -131,8 +131,9 @@ define([
     // TODO: Test null and empty lists
   });
 
-  describe('Display', function() {
-    it('Cleans out old content and displays news items', function () {
+  describe('Display', function () {
+
+    it('Cleans out old content and displays news item', function () {
       var loadInto = $('#searchResults');
       expect(loadInto.find('#oldContent').text()).to.equal('Old Content');
 
@@ -140,21 +141,6 @@ define([
       fixture.display(loadInto, displayItems);
 
       expect(loadInto.find('#oldContent').text()).to.equal('');
-
-      for(var i = 0; i < displayItems.length; i++) {
-        var heading = loadInto.find('h4').eq(i).text();
-        expect(heading).to.equal(displayItems[i].title);
-      }
-    });
-  });
-
-  describe('Display Templating', function () {
-
-    it('Cleans out old content and displays news item', function () {
-      var loadInto = $('#searchResults');
-      expect(loadInto.find('#oldContent').text()).to.equal('Old Content');
-      var displayItems = testUtils.newsDisplayItems();
-      fixture.displayTemplate(loadInto, displayItems);
 
       for(var i = 0; i < displayItems.length; i++) {
         var heading = loadInto.find('h4').eq(i).text();

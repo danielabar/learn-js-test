@@ -19,7 +19,7 @@ define(['jquery', './sentiment', 'hbs!templates/searchResults'], function($, sen
       }
       search(query).then(
         function(data) {
-          displayTemplate(config.loadInto, process(data.response.results));
+          display(config.loadInto, process(data.response.results));
         },
         function(jqXHR, textStatus, errorThrown) {
           console.error('textStatus: ' + textStatus + ', errorThrown: ' + errorThrown);
@@ -59,18 +59,7 @@ define(['jquery', './sentiment', 'hbs!templates/searchResults'], function($, sen
       });
     };
 
-    // In a real app, this would be handled by templating
     var display = function(loadInto, displayItems) {
-      loadInto.empty();
-      displayItems.forEach(function(item) {
-        $('<h4></h4>', {
-          text: item.title,
-          class: 'media-heading'
-        }).appendTo(loadInto);
-      });
-    };
-
-    var displayTemplate = function(loadInto, displayItems) {
       loadInto.empty();
       loadInto.append(template({items: displayItems}));
     };
@@ -80,8 +69,7 @@ define(['jquery', './sentiment', 'hbs!templates/searchResults'], function($, sen
       validate: validate,
       search: search,
       process: process,
-      display: display,
-      displayTemplate: displayTemplate
+      display: display
     };
 
   });
