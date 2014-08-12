@@ -5,6 +5,12 @@ require.config({
     hbs: '../bower_components/require-handlebars-plugin/hbs',
     alert: '../bower_components/bootstrap/js/alert'
   },
+  shim: {
+    'alert': {
+      deps: ['jquery'],
+      exports: '$.fn.alert'
+    }
+  },
   hbs: {
     helpers: true,            // default: true
     i18n: false,              // default: false

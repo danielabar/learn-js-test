@@ -32,6 +32,13 @@ require.config({
     testUtils: 'test/TestUtils'
   },
 
+  shim: {
+    'alert': {
+      deps: ['jquery'],
+      exports: '$.fn.alert'
+    }
+  },
+
   // dynamically load all test files
   deps: allTestFiles,
 
