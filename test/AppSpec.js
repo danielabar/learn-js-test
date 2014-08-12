@@ -32,6 +32,7 @@ define(
         sinon.assert.calledWith(newsStub, sinon.match({query: $('#query')}));
         sinon.assert.calledWith(newsStub, sinon.match({action: $('#searchNews')}));
         sinon.assert.calledWith(newsStub, sinon.match({loadInto: $('#searchResults')}));
+        sinon.assert.calledWith(newsStub, sinon.match({loadIntoError: $('#error')}));
       });
 
     });

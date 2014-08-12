@@ -28,7 +28,7 @@ module.exports = function(config) {
     // list of files to exclude
     exclude: [
       'app/scripts/main.js',
-      'app/bower_components/bootstrap/**/*.js',
+      // 'app/bower_components/bootstrap/**/*.js',
       'app/bower_components/jquery/test/**/*.js',
       'app/bower_components/sinon/test/**/*.js'
     ],

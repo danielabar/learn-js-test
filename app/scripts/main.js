@@ -2,7 +2,8 @@ require.config({
   paths: {
     jquery: '../bower_components/jquery/jquery',
     handlebars: '../bower_components/handlebars/handlebars',
-    hbs: '../bower_components/require-handlebars-plugin/hbs'
+    hbs: '../bower_components/require-handlebars-plugin/hbs',
+    alert: '../bower_components/bootstrap/js/alert'
   },
   hbs: {
     helpers: true,            // default: true

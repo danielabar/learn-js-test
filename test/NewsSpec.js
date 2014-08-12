@@ -131,7 +131,7 @@ define([
     // TODO: Test null and empty lists
   });
 
-  describe('Display', function () {
+  describe('Display Results', function () {
 
     it('Cleans out old content and displays news item', function () {
       var loadInto = $('#searchResults');
@@ -153,6 +153,23 @@ define([
         expect(info).to.contain(displayItems[i].author);
         expect(info).to.contain(displayItems[i].publishedDate);
       }
+    });
+  });
+
+  describe('Display Error', function () {
+
+    it('Displays error title and message', function () {
+      var loadIntoError = $('#error');
+      var errorTitle = 'Boo';
+      var errorMessage = 'Something went wrong';
+
+      fixture.displayError(loadIntoError, errorTitle, errorMessage);
+
+      var actualTitle = loadIntoError.find('strong').text();
+      expect(actualTitle).to.equal(errorTitle);
+
+      var actualMessage = loadIntoError.find('.message').text();
+      expect(actualMessage).to.equal(errorMessage);
     });
   });
 

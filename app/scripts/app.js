@@ -11,6 +11,7 @@ define(
         query: $('#query'),
         action: $('#searchNews'),
         loadInto: $('#searchResults'),
+        loadIntoError: $('#error')
       });
     };
 

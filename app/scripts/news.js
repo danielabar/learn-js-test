@@ -1,4 +1,11 @@
-define(['jquery', './sentiment', 'hbs!templates/searchResults'], function($, sentiment, template) {
+define([
+  'jquery',
+  './sentiment',
+  'hbs!templates/searchResults',
+  'hbs!templates/error',
+  'alert'
+],
+  function($, sentiment, templateResults, templateError) {
 
     var init = function(config) {
       registerHandlers(config);
@@ -14,7 +21,7 @@ define(['jquery', './sentiment', 'hbs!templates/searchResults'], function($, sen
     var execute = function(config) {
       var query = config.query.val();
       if (!validate(query)) {
-        console.error('You have entered an invalid search term');
+        displayError(config.loadIntoError, 'Invalid', 'You have entered an invalid search term');
         return;
       }
       search(query).then(
@@ -59,9 +66,15 @@ define(['jquery', './sentiment', 'hbs!templates/searchResults'], function($, sen
       });
     };
 
+    // TODO: Consider refactoring display functions to separate module
     var display = function(loadInto, displayItems) {
       loadInto.empty();
-      loadInto.append(template({items: displayItems}));
+      loadInto.append(templateResults({items: displayItems}));
+    };
+
+    var displayError = function(loadIntoError, errorTitle, errorMessage) {
+      loadIntoError.empty();
+      loadIntoError.append(templateError({title: errorTitle, message: errorMessage}));
     };
 
     return {
@@ -69,7 +82,8 @@ define(['jquery', './sentiment', 'hbs!templates/searchResults'], function($, sen
       validate: validate,
       search: search,
       process: process,
-      display: display
+      display: display,
+      displayError: displayError
     };
 
   });
