@@ -131,46 +131,4 @@ define([
     // TODO: Test null and empty lists
   });
 
-  describe('Display Results', function () {
-
-    it('Cleans out old content and displays news item', function () {
-      var loadInto = $('#searchResults');
-      expect(loadInto.find('#oldContent').text()).to.equal('Old Content');
-
-      var displayItems = testUtils.newsDisplayItems();
-      fixture.display(loadInto, displayItems);
-
-      expect(loadInto.find('#oldContent').text()).to.equal('');
-
-      for(var i = 0; i < displayItems.length; i++) {
-        var heading = loadInto.find('h4').eq(i).text();
-        expect(heading).to.equal(displayItems[i].title);
-
-        var content = loadInto.find('.media-body').eq(i).text();
-        expect(content).to.contain(displayItems[i].content);
-
-        var info = loadInto.find('.info').eq(i).text();
-        expect(info).to.contain(displayItems[i].author);
-        expect(info).to.contain(displayItems[i].publishedDate);
-      }
-    });
-  });
-
-  describe('Display Error', function () {
-
-    it('Displays error title and message', function () {
-      var loadIntoError = $('#error');
-      var errorTitle = 'Boo';
-      var errorMessage = 'Something went wrong';
-
-      fixture.displayError(loadIntoError, errorTitle, errorMessage);
-
-      var actualTitle = loadIntoError.find('strong').text();
-      expect(actualTitle).to.equal(errorTitle);
-
-      var actualMessage = loadIntoError.find('.message').text();
-      expect(actualMessage).to.equal(errorMessage);
-    });
-  });
-
 });

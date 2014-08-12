@@ -1,11 +1,10 @@
 define([
   'jquery',
   './sentiment',
-  'hbs!templates/searchResults',
-  'hbs!templates/error',
+  './display',
   'alert'
 ],
-  function($, sentiment, templateResults, templateError) {
+  function($, sentiment, display) {
 
     var init = function(config) {
       registerHandlers(config);
@@ -21,12 +20,12 @@ define([
     var execute = function(config) {
       var query = config.query.val();
       if (!validate(query)) {
-        displayError(config.loadIntoError, 'Invalid', 'You have entered an invalid search term');
+        display.displayError(config.loadIntoError, 'Invalid', 'Please enter a valid search term');
         return;
       }
       search(query).then(
         function(data) {
-          display(config.loadInto, process(data.response.results));
+          display.displayResults(config.loadInto, process(data.response.results));
         },
         function(jqXHR, textStatus, errorThrown) {
           console.error('textStatus: ' + textStatus + ', errorThrown: ' + errorThrown);
@@ -66,24 +65,11 @@ define([
       });
     };
 
-    // TODO: Consider refactoring display functions to separate module
-    var display = function(loadInto, displayItems) {
-      loadInto.empty();
-      loadInto.append(templateResults({items: displayItems}));
-    };
-
-    var displayError = function(loadIntoError, errorTitle, errorMessage) {
-      loadIntoError.empty();
-      loadIntoError.append(templateError({title: errorTitle, message: errorMessage}));
-    };
-
     return {
       init: init,
       validate: validate,
       search: search,
-      process: process,
-      display: display,
-      displayError: displayError
+      process: process
     };
 
   });

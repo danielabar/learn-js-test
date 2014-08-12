@@ -145,6 +145,11 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js',
         browsers: ['Chrome', 'Firefox', 'IE', 'IE9', 'PhantomJS'],
         autoWatch: true
+      },
+      allmac: {
+        configFile: 'karma.conf.js',
+        browsers: ['Chrome', 'Firefox', 'PhantomJS'],
+        autoWatch: true
       }
     },
 
