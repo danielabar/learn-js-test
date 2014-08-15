@@ -1,0 +1,9 @@
+var search = function(query) {
+  return $.ajax({
+    url: '/data/sports.json',
+    data: {
+      q: query
+    },
+    dataType: 'json'
+  }).promise();
+};
