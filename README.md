@@ -2,6 +2,8 @@
 
 > A project to demonstrate client-side JavaScript testing for an app built with RequireJS.
 
+There's also a [presentation](http://danielabar.github.io/js-unit-test-presentation) to go along with it.
+
 ## Development Stack
 * App scaffolded with [yeoman](http://yeoman.io/) using [generator-webapp-rjs](https://www.npmjs.org/package/generator-webapp-rjs)
 * [RequireJS](http://requirejs.org/) for module loading
