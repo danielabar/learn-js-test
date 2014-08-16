@@ -2,8 +2,6 @@ define([
   '../app/scripts/news',
   '../app/scripts/sentiment',
   '../app/bower_components/chai/chai',
-  // '../app/bower_components/sinon/lib/sinon',
-  // '../app/bower_components/sinonjs/sinon',
   'jquery',
   'testUtils'
 ], function(fixture, sentiment, chai, $, testUtils) {

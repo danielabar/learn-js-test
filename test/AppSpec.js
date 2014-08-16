@@ -3,8 +3,6 @@ define(
     '../app/scripts/app',
     '../app/scripts/news',
     '../app/bower_components/chai/chai',
-    // '../app/bower_components/sinon/lib/sinon',
-    // '../app/bower_components/sinonjs/sinon',
     'jquery'
   ],
   function(fixture, news, chai, $) {
