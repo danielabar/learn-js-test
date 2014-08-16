@@ -56,3 +56,7 @@ Test runs also generate a coverage report. See the results in the  ```coverage``
   ```
   grunt deploy
   ```
+
+## Sinon.js
+
+Must be loaded as a global. Bower package is unusable, and even the manually downloaded version doesn't work as a require dependency.

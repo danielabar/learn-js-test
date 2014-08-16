@@ -3,10 +3,11 @@ define(
     '../app/scripts/app',
     '../app/scripts/news',
     '../app/bower_components/chai/chai',
-    '../app/bower_components/sinon/lib/sinon',
+    // '../app/bower_components/sinon/lib/sinon',
+    // '../app/bower_components/sinonjs/sinon',
     'jquery'
   ],
-  function(fixture, news, chai, sinon, $) {
+  function(fixture, news, chai, $) {
 
     var expect = chai.expect;
     var sandbox = sinon.sandbox.create();

@@ -12,28 +12,10 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['mocha', 'requirejs'],
 
-    /*
-    http://stackoverflow.com/questions/20570301/typeerror-undefined-is-not-a-function-evaluating-sinon-spy
-    "sinon/lib/sinon.js",
-"sinon/lib/sinon/spy.js",
-"sinon/lib/sinon/call.js",
-"sinon/lib/sinon/behavior.js",
-"sinon/lib/sinon/stub.js",
-"sinon/lib/sinon/mock.js",
-"sinon/lib/sinon/collection.js",
-"sinon/lib/sinon/assert.js",
-"sinon/lib/sinon/sandbox.js",
-"sinon/lib/sinon/test.js",
-"sinon/lib/sinon/test_case.js",
-"sinon/lib/sinon/assert.js",
-"sinon/lib/sinon/match.js"
-    */
-
-
     // list of files / patterns to load in the browser
     files: [
+      'app/vendor/sinon-1.10.3.js',
       {pattern: 'app/bower_components/**/*.js', included: false},
-      {pattern: 'app/bower_components/sinon/lib/**/*.js', included: true},
       {pattern: 'app/scripts/**/*.js', included: false},
       {pattern: 'app/scripts/templates/**/*.hbs', included: false},
       'test/html/*Spec.html',
@@ -46,9 +28,7 @@ module.exports = function(config) {
     // list of files to exclude
     exclude: [
       'app/scripts/main.js',
-      // 'app/bower_components/bootstrap/**/*.js',
-      'app/bower_components/jquery/test/**/*.js',
-      'app/bower_components/sinon/test/**/*.js'
+      'app/bower_components/jquery/test/**/*.js'
     ],
 
 

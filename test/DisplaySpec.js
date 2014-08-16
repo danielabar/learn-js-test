@@ -2,21 +2,15 @@ define(
   [
     '../app/scripts/display',
     '../app/bower_components/chai/chai',
-    '../app/bower_components/sinon/lib/sinon',
     'jquery',
     'testUtils'
   ],
-  function(fixture, chai, sinon, $, testUtils) {
+  function(fixture, chai, $, testUtils) {
 
     var expect = chai.expect;
-    var sandbox = sinon.sandbox.create();
 
     beforeEach(function() {
       document.body.innerHTML = window.__html__['test/html/AppSpec.html'];
-    });
-
-    afterEach(function() {
-      sandbox.restore();
     });
 
     describe('Display', function() {
