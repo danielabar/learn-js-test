@@ -1,10 +1,12 @@
 define([
   '../app/scripts/news',
+  '../app/scripts/api',
   '../app/scripts/sentiment',
+  '../app/scripts/display',
   '../app/bower_components/chai/chai',
   'jquery',
   'testUtils'
-], function(fixture, sentiment, chai, $, testUtils) {
+], function(fixture, api, sentiment, display, chai, $, testUtils) {
 
   var expect = chai.expect;
 
@@ -69,6 +71,37 @@ define([
           sinon.assert.calledWith(sentimentStub, items[i].fields.trailText);
         }
       });
+    });
+
+    describe('Execute', function() {
+      var sandbox = sinon.sandbox.create();
+      beforeEach(function() {
+        document.body.innerHTML = window.__html__['test/html/AppSpec.html'];
+      });
+      afterEach(function () {
+        sandbox.restore();
+      });
+
+      it('Displays Results when api call is successful',  function() {
+        $('#query').val('foo');
+        var config = {
+          query: $('#query'),
+          loadInto: $('#searchResults'),
+        };
+
+        var apiStub = sandbox.stub(api, 'search', function() {
+          var d = $.Deferred();
+          d.resolve(testUtils.guardianApiSuccessResponse());
+          return d.promise();
+        });
+
+        var displayStub = sandbox.stub(display, 'displayResults');
+
+        fixture.execute(config);
+        sinon.assert.calledWith(apiStub, 'foo');
+        sinon.assert.calledWith(displayStub, config.loadInto);
+      });
+
     });
 
   });

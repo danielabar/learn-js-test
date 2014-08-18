@@ -59,7 +59,8 @@ define([
     return {
       init: init,
       validate: validate,
-      process: process
+      process: process,
+      execute: execute
     };
 
   });
