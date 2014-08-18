@@ -1,10 +1,11 @@
 define([
   'jquery',
+  './api',
   './sentiment',
   './display',
   'alert'
 ],
-  function($, sentiment, display) {
+  function($, api, sentiment, display) {
 
     var init = function(config) {
       registerHandlers(config);
@@ -23,7 +24,7 @@ define([
         display.displayError(config.loadIntoError, 'Invalid', 'Please enter a valid search term');
         return;
       }
-      search(query).then(
+      api.search(query).then(
         function(data) {
           display.displayResults(config.loadInto, process(data.response.results));
         },
@@ -39,16 +40,6 @@ define([
       } else {
         return true;
       }
-    };
-
-    var search = function(query) {
-      return $.ajax({
-        url: 'http://content.guardianapis.com/search?show-fields=all',
-        data: {
-          q: query
-        },
-        dataType: 'jsonp'
-      }).promise();
     };
 
     var process = function(items) {
@@ -68,7 +59,6 @@ define([
     return {
       init: init,
       validate: validate,
-      search: search,
       process: process
     };
 
