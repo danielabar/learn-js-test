@@ -1,5 +1,4 @@
-define(['jquery'],
-  function($) {
+define(['jquery'], function($) {
 
     var search = function(query) {
       return $.ajax({

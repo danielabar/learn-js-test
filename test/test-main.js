@@ -28,7 +28,6 @@ require.config({
     templates: 'app/scripts/templates',
     alert: 'app/bower_components/bootstrap/js/alert',
     chai: '../bower_components/chai/chai',
-    sinon: 'app/bower_components/sinonjs/sinon',
     testUtils: 'test/TestUtils'
   },
 
